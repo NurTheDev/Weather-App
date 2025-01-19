@@ -5,7 +5,13 @@ module.exports = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
-    extend: {},
+
+    extend: {
+      colors: {
+        secondaryLable: "var(--secondaryLable)",
+        whiteColor: "var(--whiteColor)",
+      },
+    },
   },
   plugins: [require("flowbite/plugin"), require("daisyui")],
 };
