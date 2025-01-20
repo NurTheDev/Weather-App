@@ -13,3 +13,32 @@
     @apply font-poppins m-0 p-0 outline-none box-border;
   }
 }
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .weather-card {
+    @apply bg-gradient-to-r from-[#5936B4] to-[#362A84] rounded-2xl p-6 flex items-center justify-between;
+  }
+  .weather-styling {
+    @apply flex flex-col space-y-3 items-start w-full;
+  }
+  .weather-heading {
+    @apply text-whiteColor font-bold text-7xl text-center;
+  }
+  .max-min {
+    @apply text-secondaryLable flex items-center gap-x-2;
+  }
+  .details {
+    @apply flex justify-around text-whiteColor text-xl gap-x-2 text-center w-full;
+  }
+  .humidity_wind {
+    @apply flex items-center text-start justify-around w-full;
+  }
+  .medimu_font {
+    @apply text-whiteColor font-medium;
+  }
+  .flex_col {
+    @apply flex flex-col items-center;
+  }
+}
