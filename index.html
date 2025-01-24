@@ -90,7 +90,7 @@
           ><i class="fa-solid fa-magnifying-glass"></i
         ></label>
       </div>
-      <div class="flex-center gap-4 mt-4 flex-wrap hidden">
+      <div id="defultCard" class="flex-center gap-4 mt-4 flex-wrap flex">
         <div class="weather-card">
           <div class="weather-styling">
             <h2 class="weather-heading temp">19°</h2>
@@ -222,14 +222,15 @@
       </div>
     </div>
     <div
-      class="w-1/4 m-auto flex items-center justify-center min-h-[calc(100%-35%)] hidden"
+      id="searchCard"
+      class="w-1/4 m-auto items-center justify-center min-h-[calc(100%-35%)] hidden transition-all duration-1000"
     >
       <div
         class="bg-[url('/image/Image.png')] bg-cover bg-center h-4/5 rounded-3xl shadow-xl w-full p-4"
       >
         <p class="heading name">Dhaka</p>
         <h1 class="text-[96px] text-whiteColor text-center searchTemp">19°</h1>
-        <p class="text-secondaryLable text-center text-2xl">Mostly Clear</p>
+        <p id="condition" class="text-secondaryLable text-center text-2xl">Mostly Clear</p>
         <div class="flex gap-x-4 justify-center mt-3 text-whiteColor">
           <p class="searchMaxTemp">H:24°</p>
           <p class="searchMinTemp">L:18°</p>
@@ -256,6 +257,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="hidden invalid">
+      <h1 class="text-whiteColor text-center text-3xl mt-4">Invalid Search</h1>
     </div>
     <script src="src/main.js"></script>
   </body>

@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const invalid = document.querySelector(".invalid");
+  const searchCard = document.querySelector("#searchCard");
+  const defultCard = document.querySelector("#defultCard");
   const apiKey = "b1c3221fbd656ef07a847aa0dc6b5ff0";
   const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
@@ -30,21 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const getWeatherInfo = async (city) => {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     if (response.status == 404) {
-      
+      invalid.classList.add("block");
+      invalid.classList.remove("hidden");
+      searchCard.classList.add("hidden");
+      searchCard.classList.remove("block");
+      defultCard.classList.remove("flex");
+      defultCard.classList.add("hidden");
+    } else {
+      const data = await response.json();
+      const searchTemp = document.querySelector(".searchTemp");
+      const searchMaxTemp = document.querySelector(".searchMaxTemp");
+      const searchMinTemp = document.querySelector(".searchMaxTemp");
+      searchTemp.innerHTML = `${Math.round(data.main.temp)}°`;
+      searchMaxTemp.innerHTML = `H: ${Math.round(data.main.temp_max)}`;
+      searchMinTemp.innerHTML = `L: ${Math.round(data.main.temp_min)}`;
+      const condition = document.querySelector("#condition");
+      condition.innerHTML = data.weather[0].description;
+      const humidity = document.querySelector("#humidity");
+      const wind = document.querySelector("#wind");
+      const name = document.querySelector(".name");
+      name.innerHTML = data.name;
+      humidity.innerHTML = `${data.main.humidity}%`;
+      wind.innerHTML = `${data.wind.speed} km/h`;
+      console.log("data");
+      searchCard.classList.remove("hidden");
+      searchCard.classList.add("flex");
+      defultCard.classList.remove("flex");
+      defultCard.classList.add("hidden");
     }
-    const data = await response.json();
-    const searchTemp = document.querySelector(".searchTemp");
-    const searchMaxTemp = document.querySelector(".searchMaxTemp");
-    const searchMinTemp = document.querySelector(".searchMaxTemp");
-    searchTemp.innerHTML = data.main.temp;
-    searchMaxTemp.innerHTML = `H: ${data.main.temp_max}`;
-    searchMinTemp.innerHTML = `L: ${data.main.temp_min}`;
-    const humidity = document.querySelector("#humidity");
-    const wind = document.querySelector("#wind");
-    const name = document.querySelector(".name");
-    name.innerHTML = data.name;
-    humidity.innerHTML = `${data.main.humidity}%`;
-    wind.innerHTML = `${data.wind.speed} km/h`;
-   
   };
 });
